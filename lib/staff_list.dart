@@ -85,35 +85,34 @@ class StaffListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF3E5F5), // pastel purple
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80), // taller AppBar
-        child: AppBar(
-          title: Text(
-            "Staff List",
-            style: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.bold),
-          ),
-          leading: Padding(
-            padding: const EdgeInsets.all(8.0),
+      appBar: AppBar(
+        title: Text(
+          "Staff List",
+          style: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
+        leading: Padding(
+          padding: const EdgeInsets.all(4.0), // Reduced padding to give more room
+          child: SizedBox(
+            width: 50, // Try 50–60 for a bigger logo
+            height: 50,
             child: Image.asset(
               'assets/logo.png',
               fit: BoxFit.contain,
-              height: 60, // explicitly larger
-              width: 60,
             ),
           ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.filter_alt),
-              tooltip: "Filter by Department",
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const StaffFilterPage()),
-                );
-              },
-            ),
-          ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.filter_alt),
+            tooltip: "Filter by Department",
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const StaffFilterPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
