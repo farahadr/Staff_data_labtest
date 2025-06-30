@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'staff_list.dart'; // Make sure this path is correct
 
 class StaffFormPage extends StatefulWidget {
   final String? staffId;
@@ -65,16 +66,17 @@ class _StaffFormState extends State<StaffFormPage> {
           await FirebaseFirestore.instance.collection('staffs').add(staffData);
         }
 
-        // Show success message
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Staff information saved successfully')),
         );
 
-        // Navigate or call callback
         if (widget.onSuccess != null) {
-          widget.onSuccess!();
+          widget.onSuccess!(); // Closes bottom sheet if from modal
         } else {
-          Navigator.pop(context); // Go back to previous screen
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const StaffListPage()),
+          );
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
