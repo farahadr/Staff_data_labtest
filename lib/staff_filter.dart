@@ -18,9 +18,9 @@ class _StaffFilterPageState extends State<StaffFilterPage> {
       backgroundColor: const Color(0xFFF3E5F5),
       appBar: AppBar(
         title: Text("Filter Staff", style: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.bold)),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset('assets/logo.png'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Column(

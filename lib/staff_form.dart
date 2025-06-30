@@ -90,14 +90,22 @@ class _StaffFormState extends State<StaffFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF3E5F5),
-      appBar: AppBar(
-        title: Text(
-          widget.staffId == null ? "Add New Staff" : "Edit Staff",
-          style: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.bold),
-        ),
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset('assets/logo.png'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(80), // Increase AppBar height
+        child: AppBar(
+          title: Text(
+            widget.staffId == null ? "Add New Staff" : "Edit Staff",
+            style: GoogleFonts.poppins(fontSize: 28, fontWeight: FontWeight.bold),
+          ),
+          leading: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/logo.png',
+              height: 60, // You can adjust this
+              width: 60,
+              fit: BoxFit.contain,
+            ),
+          ),
         ),
       ),
       body: SingleChildScrollView(
